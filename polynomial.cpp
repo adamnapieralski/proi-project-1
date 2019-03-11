@@ -13,38 +13,34 @@
 
 
 
-Poly::Poly() {
-    for(int i = 0; i < POLY_DEGREE + 1; i++)
-        this->a[i] = 0;
-}
-Poly::Poly(int a0) {
-    for(int i = 0; i < POLY_DEGREE + 1; i++)
-        this->a[i] = 0;
+Poly::Poly(): a{0, } {}
+Poly::Poly(int a0): a{0, } {
     this->a[0] = a0;
 }
-Poly::Poly(int a1, int a0) {
-    for(int i = 0; i < POLY_DEGREE + 1; i++)
-        this->a[i] = 0;
+Poly::Poly(int a1, int a0): a{0, } {
     this->a[0] = a0;
     this->a[1] = a1;
 }
-Poly::Poly(int a2, int a1, int a0) {
-    for(int i = 0; i < POLY_DEGREE + 1; i++)
-        this->a[i] = 0;
+Poly::Poly(int a2, int a1, int a0): a{0, }  {
     this->a[0] = a0;
     this->a[1] = a1;
     this->a[2] = a2;
 }
-Poly::Poly(int a3, int a2, int a1, int a0) {
-    for(int i = 0; i < POLY_DEGREE + 1; i++)
-        this->a[i] = 0;
+Poly::Poly(int a3, int a2, int a1, int a0): a{0, }  {
     this->a[0] = a0;
     this->a[1] = a1;
     this->a[2] = a2;
     this->a[3] = a3;
 }
 
-
+int Poly::getDegree() {
+    int degree = 0;
+    for (int i = 1; i < POLY_DEGREE + 1; i++){
+        if(this->a[i])
+            degree = i;
+    }
+    return degree;
+}
 
 std::ostream& operator<<(std::ostream& os, const Poly& p1) {
 
@@ -58,7 +54,7 @@ std::ostream& operator<<(std::ostream& os, const Poly& p1) {
     }
     //if there are no nonzero coeff -> whole polynomial == 0
     if (minCoeff == -1)
-        os << 0 << std::endl;
+        os << 0;
     else{
         for (int i = POLY_DEGREE; i >= 0; i--) {
             if (p1.a[i]) {
@@ -69,8 +65,6 @@ std::ostream& operator<<(std::ostream& os, const Poly& p1) {
 
                 if (i > minCoeff)
                     os << " + ";
-                else
-                    os << std::endl;
             }
         }
     }
@@ -119,5 +113,37 @@ Poly& operator-=(Poly& p1, Poly p2){
         p1.a[i] -= p2.a[i];
     }
     return p1;
+}
+
+Poly operator*(Poly p1, Poly p2) {
+    if (p1.getDegree() + p2.getDegree() > POLY_DEGREE) {
+        throw std::invalid_argument("Product's degree would exceed maximum degree");
+    } else {
+        Poly pRes;
+        for (int i = 0; i < p1.getDegree() + 1; i++) {
+            for (int j = 0; j < p2.getDegree() + 1; j++) {
+                pRes.a[i + j] += p1.a[i] * p2.a[j];
+            }
+        }
+        return pRes;
+    }
+
+}
+
+Poly& operator*=(Poly& p1, Poly p2){
+    if (p1.getDegree() + p2.getDegree() > POLY_DEGREE) {
+        throw std::invalid_argument("Product's degree would exceed maximum degree");
+    } else {
+        Poly pRes;
+        for (int i = 0; i < p1.getDegree() + 1; i++) {
+            for (int j = 0; j < p2.getDegree() + 1; j++) {
+                pRes.a[i + j] += p1.a[i] * p2.a[j];
+            }
+        }
+        for (int i = 0; i < p1.getDegree() + 1; i++){
+            p1.a[i] = pRes.a[i];
+        }
+        return p1;
+    }
 }
 
