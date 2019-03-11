@@ -44,12 +44,7 @@ Poly::Poly(int a3, int a2, int a1, int a0) {
     this->a[3] = a3;
 }
 
-Poly operator+(Poly p1, Poly p2){
-    Poly pRes;
-    for(int i = 0; i < POLY_DEGREE + 1; i++)
-        pRes.a[i] = p1.a[i] + p2.a[i];
-    return pRes;
-}
+
 
 std::ostream& operator<<(std::ostream& os, const Poly& p1) {
 
@@ -63,7 +58,7 @@ std::ostream& operator<<(std::ostream& os, const Poly& p1) {
     }
     //if there are no nonzero coeff -> whole polynomial == 0
     if (minCoeff == -1)
-        os << 0;
+        os << 0 << std::endl;
     else{
         for (int i = POLY_DEGREE; i >= 0; i--) {
             if (p1.a[i]) {
@@ -81,3 +76,48 @@ std::ostream& operator<<(std::ostream& os, const Poly& p1) {
     }
     return os;
 }
+
+Poly operator==(Poly p1, Poly p2){
+    for(int i = 0; i < POLY_DEGREE + 1; i++){
+        if (p1.a[i] != p2.a[i])
+            return false;
+    }
+    return true;
+}
+
+Poly operator!=(Poly p1, Poly p2){
+    for(int i = 0; i < POLY_DEGREE + 1; i++){
+        if (p1.a[i] != p2.a[i])
+            return true;
+    }
+    return false;
+}
+
+Poly operator+(Poly p1, Poly p2){
+    Poly pRes;
+    for(int i = 0; i < POLY_DEGREE + 1; i++)
+        pRes.a[i] = p1.a[i] + p2.a[i];
+    return pRes;
+}
+
+Poly& operator+=(Poly& p1, Poly p2){
+    for (int i = 0; i < POLY_DEGREE + 1; i++){
+        p1.a[i] += p2.a[i];
+    }
+    return p1;
+}
+
+Poly operator-(Poly p1, Poly p2){
+    Poly pRes;
+    for(int i = 0; i < POLY_DEGREE + 1; i++)
+        pRes.a[i] = p1.a[i] - p2.a[i];
+    return pRes;
+}
+
+Poly& operator-=(Poly& p1, Poly p2){
+    for (int i = 0; i < POLY_DEGREE + 1; i++){
+        p1.a[i] -= p2.a[i];
+    }
+    return p1;
+}
+

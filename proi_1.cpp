@@ -14,7 +14,10 @@ int main() {
     Poly p1(4, 0, 0);
     Poly p2(3, 4, 3, 10);
 
-    Poly p3 = p1 + p2;
+    Poly p3;
+    //p3 = p1 + p2;
+    cout << p3;
+    p3 += p2;
 
     cout << p3;
 

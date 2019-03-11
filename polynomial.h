@@ -23,9 +23,13 @@ public:
     Poly(int a2, int a1, int a0);
     Poly(int a3, int a2, int a1, int a0);
 
-    friend Poly operator+(Poly p1, Poly p2);
     friend std::ostream& operator<<(std::ostream& os, const Poly& p1);
-
+    friend Poly operator==(Poly p1, Poly p2);
+    friend Poly operator!=(Poly p1, Poly p2);
+    friend Poly operator+(Poly p1, Poly p2);
+    friend Poly& operator+=(Poly& p1, Poly p2);
+    friend Poly operator-(Poly p1, Poly p2);
+    friend Poly& operator-=(Poly& p1, Poly p2);
 };
 
 
