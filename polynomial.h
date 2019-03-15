@@ -28,6 +28,11 @@ public:
     int getDegree();
     void setMemIndex(int num);
 
+    Poly add(Poly p2);
+    Poly substract(Poly p2);
+    Poly checkEquality(Poly p2);
+    Poly multiply(Poly p2);
+
     friend std::ostream& operator<<(std::ostream& os, const Poly& p1);
     friend Poly operator==(Poly p1, Poly p2);
     friend Poly operator!=(Poly p1, Poly p2);

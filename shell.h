@@ -18,6 +18,10 @@ public:
     void displaySavedPolynomials(std::vector<Poly> polynomials);
     void addMemPolynomial(int coeffs[POLY_DEGREE + 1], std::vector<Poly> &polynomials);
     void deleteMemPolynomial(int memIndex, std::vector<Poly> &polynomials);
+    int selectPolynomial(std::vector<Poly> polynomials);
+    int getChoice();
+
+    bool exeMenu(std::vector<Poly> &polynomials);
 };
 
 #endif //SHELL_H
