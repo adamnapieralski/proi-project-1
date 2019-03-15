@@ -16,6 +16,7 @@
 class Poly{
 
 public:
+    int memIndex;
     int a[POLY_DEGREE + 1];
 
     Poly();
@@ -25,6 +26,7 @@ public:
     Poly(int a3, int a2, int a1, int a0);
 
     int getDegree();
+    void setMemIndex(int num);
 
     friend std::ostream& operator<<(std::ostream& os, const Poly& p1);
     friend Poly operator==(Poly p1, Poly p2);

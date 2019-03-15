@@ -42,6 +42,10 @@ int Poly::getDegree() {
     return degree;
 }
 
+void Poly::setMemIndex(int num) {
+    this->memIndex = num;
+}
+
 std::ostream& operator<<(std::ostream& os, const Poly& p1) {
 
     int minCoeff = -1;
