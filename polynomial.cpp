@@ -42,22 +42,6 @@ void Poly::setMemIndex(int num) {
     this->memIndex = num;
 }
 
-Poly Poly::add(Poly p2) {
-    return *this + p2;
-}
-
-Poly Poly::substract(Poly p2) {
-    return *this - p2;
-}
-
-Poly Poly::checkEquality(Poly p2) {
-    return *this == p2;
-}
-
-Poly Poly::multiply(Poly p2) {
-    return *this * p2;
-}
-
 std::ostream& operator<<(std::ostream& os, const Poly& p1) {
 
     int minCoeff = -1;
