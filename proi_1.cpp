@@ -2,7 +2,7 @@
  * Name: proi_1.cpp
  * Purpose: PROI project - polynomials - overloading operators - class basics
  * @author Adam Napieralski
- * @version 0.1 11/03/2019
+ * @version 0.2 15/03/2019
  */
 
 #include <iostream>
@@ -18,8 +18,6 @@ int main() {
 
     Shell shell;
 
-    while(shell.exeMenu(polynomials)) {
-        shell.displaySavedPolynomials(polynomials);
-    }
+    while(shell.exeMenu(polynomials)) { }
     return 0;
 }

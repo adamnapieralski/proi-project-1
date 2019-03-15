@@ -2,7 +2,7 @@
  * Name: polynomial.h
  * Purpose: Custom library header file with class for polynomials management
  * @author Adam Napieralski
- * @version 0.1 11/03/2019
+ * @version 0.2 11/03/2019
  */
 
 #ifndef POLYNOMIAL_H
@@ -34,8 +34,8 @@ public:
     Poly multiply(Poly p2);
 
     friend std::ostream& operator<<(std::ostream& os, const Poly& p1);
-    friend Poly operator==(Poly p1, Poly p2);
-    friend Poly operator!=(Poly p1, Poly p2);
+    friend bool operator==(Poly p1, Poly p2);
+    friend bool operator!=(Poly p1, Poly p2);
     friend Poly operator+(Poly p1, Poly p2);
     friend Poly& operator+=(Poly& p1, Poly p2);
     friend Poly operator-(Poly p1, Poly p2);

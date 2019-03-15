@@ -1,12 +1,8 @@
-//
-// Created by napiad on 11.03.19.
-//
-
 /*
- * Name: polynomial.h
+ * Name: polynomial.cpp
  * Purpose: Custom library .cpp file with class for polynomials management
  * @author Adam Napieralski
- * @version 0.1 11/03/2019
+ * @version 0.2 15/03/2019
  */
 
 #include "polynomial.h"
@@ -91,7 +87,7 @@ std::ostream& operator<<(std::ostream& os, const Poly& p1) {
     return os;
 }
 
-Poly operator==(Poly p1, Poly p2){
+bool operator==(Poly p1, Poly p2){
     for(int i = 0; i < POLY_DEGREE + 1; i++){
         if (p1.a[i] != p2.a[i])
             return false;
@@ -99,7 +95,7 @@ Poly operator==(Poly p1, Poly p2){
     return true;
 }
 
-Poly operator!=(Poly p1, Poly p2){
+bool operator!=(Poly p1, Poly p2){
     for(int i = 0; i < POLY_DEGREE + 1; i++){
         if (p1.a[i] != p2.a[i])
             return true;

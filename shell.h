@@ -1,6 +1,9 @@
-//
-// Created by napiad on 14.03.19.
-//
+/*
+ * Name: shell.h
+ * Purpose: Custom library header file with class for user interface management
+ * @author Adam Napieralski
+ * @version 0.2 15/03/2019
+ */
 
 #ifndef SHELL_H
 #define SHELL_H
@@ -19,6 +22,7 @@ public:
     void addMemPolynomial(int coeffs[POLY_DEGREE + 1], std::vector<Poly> &polynomials);
     void deleteMemPolynomial(int memIndex, std::vector<Poly> &polynomials);
     int selectPolynomial(std::vector<Poly> polynomials);
+    Poly getPoly(int memIndex, std::vector<Poly> polynomials);
     int getChoice();
 
     bool exeMenu(std::vector<Poly> &polynomials);
